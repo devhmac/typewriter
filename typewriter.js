@@ -1,5 +1,5 @@
 const sentence = "hello there from lighthouse labs";
-let time = 0;
+let timeout = 0;
 
 // const typeDelay = (character) => {
 //   setTimeout(() => {
@@ -11,6 +11,9 @@ for (let char of sentence) {
   setTimeout(() => {
     process.stdout.write(char)
 
-  }, time);
-  time += 50;
+  }, timeout);
+  timeout += 50;
 }
+setTimeout(() => { // this needs to occur after all the scheduled tasks are complete, not din the main thread
+  process.stdout.write('\n');
+}, timeout + 1)
